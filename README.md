@@ -8,7 +8,12 @@
 
 ③ `brew install helm`を実行し、`helm`コマンドを使えるようにする
 
-④ ローカルリポジトリのルートに`envfile`を作成する  
+④ 各プロジェクトのリポジトリをローカルへcloneする  
+- https://github.com/kuzrwkd/skys-client
+- https://github.com/kuzrwkd/skys-api
+- https://github.com/kuzrwkd/skys-scraper
+
+⑤ `skys-k8s`ローカルリポジトリのルートに`envfile`を作成する  
 
 `envfile`の内容
 ```
@@ -17,6 +22,8 @@ SKYS_SCRAPER_ROOT_PATH=/Users/＜Macのユーザー名＞/＜skys-scraperのロ�
 SKYS_API_ROOT_PATH=/Users/＜Macのユーザー名＞/＜skys-apiのローカルリポジトリまでのパス＞
 SKYS_CLIENT_ROOT_PATH=/Users/＜Macのユーザー名＞/＜skys-clientのローカルリポジトリまでのパス＞
 ```
+
+⑥ 「基本操作一覧」のコマンドが使える事を確認する
 
 ## 基本操作一覧
 
