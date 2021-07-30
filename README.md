@@ -9,6 +9,7 @@
 ③ `brew install helm`を実行し、`helm`コマンドを使えるようにする
 
 ④ ローカルリポジトリのルートに`envfile`を作成する  
+
 `envfile`の内容
 ```
 # project root
@@ -17,7 +18,7 @@ SKYS_API_ROOT_PATH=/Users/＜Macのユーザー名＞/＜skys-apiのローカル
 SKYS_CLIENT_ROOT_PATH=/Users/＜Macのユーザー名＞/＜skys-clientのローカルリポジトリまでのパス＞
 ```
 
-### 基本操作一覧
+## 基本操作一覧
 
 |                            | all                | client                | api                | scraper                | 
 | :------------------------- | :----------------- | :-------------------- | :----------------- | :--------------------- | 
