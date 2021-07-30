@@ -1,36 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: skys-api-app-dep
+  name: skys-client-app-dep
 spec:
   selector:
     matchLabels:
-      app: skys-api-app
+      app: skys-client-app
   strategy:
     type: Recreate
   template:
     metadata:
-      name: skys-api-app-pod
+      name: skys-client-app-pod
       labels:
-        app: skys-api-app
+        app: skys-client-app
     spec:
       containers:
-        - name: skys-api-app
-          image: skys-api:nestjs
+        - name: skys-client-app
+          image: skys-client:nextjs
           imagePullPolicy: Never
           volumeMounts:
-            - name: skys-api-app
+            - name: skys-client-app
               mountPath: /var/www
-            - name: skys-api-npm-log
+            - name: skys-client-npm-log
               mountPath: /root/.npm/_logs
           ports:
             - containerPort: 3000
       volumes:
-        - name: skys-api-app
+        - name: skys-client-app
           hostPath:
-            path: /Users/hiroki/Project/skys-api
+            path: {{ .Values.container.volume.project_root_path }}
             type: DirectoryOrCreate
-        - name: skys-api-npm-log
+        - name: skys-client-npm-log
           hostPath:
-            path: /Users/hiroki/Project/skys-api/logs/npm
+            path: {{ .Values.container.volume.project_root_path }}/logs/npm
             type: DirectoryOrCreate

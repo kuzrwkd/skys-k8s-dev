@@ -28,9 +28,9 @@ spec:
       volumes:
         - name: skys-scraper-app
           hostPath:
-            path: /Users/hiroki/Project/skys-scraper
+            path: {{ .Values.container.volume.project_root_path }}
             type: DirectoryOrCreate
         - name: skys-scraper-app-npm-log
           hostPath:
-            path: /Users/hiroki/Project/skys-scraper/logs/npm
+            path: {{ .Values.container.volume.project_root_path }}/logs/npm
             type: DirectoryOrCreate
