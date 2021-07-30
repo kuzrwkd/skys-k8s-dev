@@ -25,6 +25,13 @@ spec:
               mountPath: /root/.npm/_logs
           ports:
             - containerPort: 3000
+          env:
+            - name: CHOKIDAR_USEPOLLING
+              value: "true" # コンテナ内でホットリロードを有効にする
+            - name: NODE_ENV
+              value: "development"
+            - name: NEXT_PUBLIC_LOCAL_API_BASE_URL
+              value: "http://localhost:3000/v1/"
       volumes:
         - name: skys-client-app
           hostPath:

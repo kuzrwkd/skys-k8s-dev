@@ -25,6 +25,15 @@ spec:
               mountPath: /root/.npm/_logs
           ports:
             - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "development"
+            - name: PRISMA_DATABASE_URL
+              value: "mysql://root:password@skys-scraper-db-svc:3306/skys-scraper"
+            - name: DATABASE_HOST
+              value: "skys-scraper-db-svc"
+            - name: DATABASE_PORT
+              value: "3306"
       volumes:
         - name: skys-scraper-app
           hostPath:

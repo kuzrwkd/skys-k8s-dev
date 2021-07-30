@@ -9,10 +9,6 @@ set -eux
 
 cd /var/www
 
-if [ -e '.env' ]; then
-  source .env
-fi
-
 npm cache clean -f \
 && npm install \
 && node node_modules/puppeteer/install.js
@@ -26,7 +22,6 @@ if [ "$NODE_ENV" == 'development' ]; then
   npm run start:dev
 else
   # 本番環境用
-  #  TODO: pm2の wait_ready が上手く機能しないため、初回（起動時）batch処理が失敗する（2回目以降は正常に動く）
   pm2 start ecosystem.config.js
   while true; do sleep 86400; done
 fi
