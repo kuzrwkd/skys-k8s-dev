@@ -9,10 +9,6 @@ set -eux
 
 cd /var/www
 
-if [ -e '.env' ]; then
-  source .env
-fi
-
 npm cache clean -f \
 && npm install
 
