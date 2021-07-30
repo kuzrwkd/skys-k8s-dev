@@ -17,14 +17,11 @@ SKYS_API_ROOT_PATH=/Users/＜Macのユーザー名＞/＜skys-apiのローカル
 SKYS_CLIENT_ROOT_PATH=/Users/＜Macのユーザー名＞/＜skys-clientのローカルリポジトリまでのパス＞
 ```
 
-⑤ `make`コマンドでdocker imageをビルドする  
-例）`make build-all`
+### 基本操作一覧
 
-⑥ `make`コマンドで各環境を立ち上げる  
-例）`make install-all`
-
-⑦ `make`コマンドで各環境をdownさせる  
-例）`make uninstall-all`
-
-⑧ `make`コマンドでdocker imageを削除する  
-例）`make clean-all`
+|                            | all                | client                | api                | scraper                | 
+| :------------------------- | :----------------- | :-------------------- | :----------------- | :--------------------- | 
+| docker imageのビルド       | make build-all     | make build-client     | make build-api     | make build-scraper     | 
+| docker imageの削除         | make clean-all     | make clean-client     | make clean-api     | make clean-scraper     | 
+| kubernetes環境を構築する   | make install-all   | make install-client   | make install-api   | make install-scraper   | 
+| kubernetes環境を終了させる | make uninstall-all | make uninstall-client | make uninstall-api | make uninstall-scraper | 
