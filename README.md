@@ -8,7 +8,7 @@
 
 ③ `brew install helm`を実行し、`helm`コマンドを使えるようにする
 
-④ このローカルリポジトリのルートに`envfile`を作成する  
+④ ローカルリポジトリのルートに`envfile`を作成する  
 `envfile`の内容
 ```
 # project root
