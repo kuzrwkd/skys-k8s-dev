@@ -21,6 +21,10 @@
 SKYS_SCRAPER_ROOT_PATH=/Users/＜Macのユーザー名＞/＜skys-scraperのローカルリポジトリまでのパス＞
 SKYS_API_ROOT_PATH=/Users/＜Macのユーザー名＞/＜skys-apiのローカルリポジトリまでのパス＞
 SKYS_CLIENT_ROOT_PATH=/Users/＜Macのユーザー名＞/＜skys-clientのローカルリポジトリまでのパス＞
+
+# pm2.io（無くても良い）
+PM2_PUBLIC_KEY=＜pm2plusのダッシュボードで入手したpublic_key＞
+PM2_SECRET_KEY=＜pm2plusのダッシュボードで入手したsecret_key＞
 ```
 
 ⑥ 「基本操作一覧」のコマンドが使える事を確認する

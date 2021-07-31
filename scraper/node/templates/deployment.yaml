@@ -34,6 +34,10 @@ spec:
               value: "skys-scraper-db-svc"
             - name: DATABASE_PORT
               value: "3306"
+            - name: PM2_PUBLIC_KEY
+              value: {{ .Values.container.pm2io.public_key }}
+            - name: PM2_SECRET_KEY
+              value: {{ .Values.container.pm2io.secret_key }}
       volumes:
         - name: skys-scraper-app
           hostPath:
