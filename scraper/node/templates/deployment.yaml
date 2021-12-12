@@ -24,16 +24,20 @@ spec:
             - name: skys-scraper-app-npm-log
               mountPath: /root/.npm/_logs
           ports:
-            - containerPort: 3000
+            - containerPort: {{ .Values.container.ports.containerPort }}
           env:
-            - name: NODE_ENV
-              value: "development"
-            - name: PRISMA_DATABASE_URL
-              value: "mysql://root:password@skys-scraper-db-svc:3306/skys-scraper"
+            - name: AWS_DEFAULT_REGION
+              value: "ap-northeast-1"
+            - name: AWS_DEFAULT_OUTPUT
+              value: "json"
+            - name: AWS_ACCESS_KEY_ID
+              value: "test"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "test"
             - name: DATABASE_HOST
               value: "skys-scraper-db-svc"
             - name: DATABASE_PORT
-              value: "3306"
+              value: "8000"
             - name: PM2_PUBLIC_KEY
               value: {{ .Values.container.pm2io.public_key }}
             - name: PM2_SECRET_KEY
