@@ -26,6 +26,8 @@ spec:
           ports:
             - containerPort: {{ .Values.container.ports.containerPort }}
           env:
+            - name: NODE_ENV
+              value: "development"
             - name: AWS_DEFAULT_REGION
               value: "ap-northeast-1"
             - name: AWS_DEFAULT_OUTPUT
@@ -34,10 +36,16 @@ spec:
               value: "test"
             - name: AWS_SECRET_ACCESS_KEY
               value: "test"
+            - name: AWS_CLI_FILE_ENCODING
+              value: "utf-8"
             - name: DATABASE_HOST
               value: "skys-scraper-db-svc"
             - name: DATABASE_PORT
               value: "8000"
+            - name: APP_HOST
+              value: "skys-scraper-app-svc"
+            - name: APP_PORT
+              value: "3000"
             - name: PM2_PUBLIC_KEY
               value: {{ .Values.container.pm2io.public_key }}
             - name: PM2_SECRET_KEY

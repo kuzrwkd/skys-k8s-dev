@@ -4,6 +4,15 @@ WORKDIR /var/www
 
 RUN apt-get update \
     && apt-get install -y \
+    locales \
+    locales-all
+
+RUN update-locale LANG=ja_JP.UTF-8
+
+ENV LANG ja_JP.UTF-8
+
+RUN apt-get update \
+    && apt-get install -y \
     curl \
     unzip \
     less \
