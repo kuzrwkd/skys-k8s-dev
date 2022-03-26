@@ -42,6 +42,10 @@ spec:
               value: "skys-scraper-db-svc"
             - name: DATABASE_PORT
               value: "8000"
+            - name: MEDIA_ORGANIZATION_TABLE_NAME
+              value: "MediaOrganization"
+            - name: NEWSFEED_TABLE_NAME
+              value: "NewsFeed"
             - name: APP_HOST
               value: "skys-scraper-app-svc"
             - name: APP_PORT
