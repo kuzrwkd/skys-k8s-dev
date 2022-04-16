@@ -24,7 +24,7 @@ spec:
             - name: skys-scraper-app-npm-log
               mountPath: /root/.npm/_logs
           ports:
-            - containerPort: {{ .Values.container.ports.containerPort }}
+            - containerPort: 3000
           env:
             - name: NODE_ENV
               value: "development"

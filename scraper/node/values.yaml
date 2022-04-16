@@ -7,8 +7,6 @@ service:
 container:
   volume:
     project_root_path: default
-  ports:
-    containerPort: 3000
   pm2io:
     public_key: default
     secret_key: default

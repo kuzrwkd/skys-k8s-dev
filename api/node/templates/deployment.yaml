@@ -28,12 +28,32 @@ spec:
           env:
             - name: NODE_ENV
               value: "development"
-            - name: PRISMA_DATABASE_URL
-              value: "mysql://root:password@skys-api-db-svc:3306/skys-api"
+            - name: AWS_DEFAULT_REGION
+              value: "ap-northeast-1"
+            - name: AWS_DEFAULT_OUTPUT
+              value: "json"
+            - name: AWS_ACCESS_KEY_ID
+              value: "test"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "test"
+            - name: AWS_CLI_FILE_ENCODING
+              value: "utf-8"
             - name: DATABASE_HOST
-              value: "skys-api-db-svc"
+              value: "skys-scraper-db-svc"
             - name: DATABASE_PORT
-              value: "3306"
+              value: "8000"
+            - name: MEDIA_ORGANIZATION_TABLE_NAME
+              value: "MediaOrganization"
+            - name: NEWSFEED_TABLE_NAME
+              value: "NewsFeed"
+            - name: APP_HOST
+              value: "skys-api-app-svc"
+            - name: APP_PORT
+              value: "3000"
+            - name: PM2_PUBLIC_KEY
+              value: {{ .Values.container.pm2io.public_key }}
+            - name: PM2_SECRET_KEY
+              value: {{ .Values.container.pm2io.secret_key }}
       volumes:
         - name: skys-api-app
           hostPath:
