@@ -4,10 +4,20 @@ WORKDIR /var/www
 
 RUN apt-get update \
     && apt-get install -y \
+    locales \
+    locales-all
+
+RUN update-locale LANG=ja_JP.UTF-8
+
+ENV LANG ja_JP.UTF-8
+
+RUN apt-get update \
+    && apt-get install -y \
     curl \
     unzip \
     libssl-dev \
-    procps
+    procps \
+    less
 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
     && unzip awscliv2.zip \
