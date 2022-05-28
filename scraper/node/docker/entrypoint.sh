@@ -11,7 +11,6 @@ cd /var/www
 
 npm cache clean -f
 npm install
-node node_modules/puppeteer/install.js
 npm run build
 
 /usr/local/bin/wait-for-it.sh "$DATABASE_HOST":"$DATABASE_PORT" --timeout=30 --strict -- echo "=== dynamodb connected! ==="
