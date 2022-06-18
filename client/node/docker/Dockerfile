@@ -1,4 +1,4 @@
-FROM node:16.3-slim
+FROM node:16.10-slim
 
 WORKDIR /var/www
 
