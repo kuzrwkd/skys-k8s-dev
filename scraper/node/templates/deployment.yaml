@@ -43,7 +43,7 @@ spec:
             - name: DATABASE_PORT
               value: "8000"
             - name: MEDIA_ORGANIZATION_TABLE_NAME
-              value: "MediaOrganization"
+              value: "Media"
             - name: NEWSFEED_TABLE_NAME
               value: "NewsFeed"
             - name: APP_HOST
