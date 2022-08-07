@@ -3,6 +3,7 @@ FROM node:16.10-slim
 WORKDIR /var/www
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium
 
 RUN apt-get update \
     && apt-get install -y \
@@ -15,9 +16,6 @@ ENV LANG ja_JP.UTF-8
 
 RUN apt-get update \
     && apt-get install -y \
-    curl \
-    unzip \
-    less \
     ca-certificates \
     fonts-liberation \
     libappindicator3-1 \
@@ -60,7 +58,12 @@ RUN apt-get update \
     fonts-ipafont-mincho \
     chromium
 
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+# Install AWS CLI
+
+RUN apt-get update \
+    && apt-get install -y \
+    curl unzip less \
+    && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
     && unzip awscliv2.zip \
     && ./aws/install
 
