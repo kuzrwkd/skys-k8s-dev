@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skys-core-app-dep
+spec:
+  selector:
+    matchLabels:
+      app: skys-core-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: skys-core-app-pod
+      labels:
+        app: skys-core-app
+    spec:
+      containers:
+        - name: skys-core-app
+          image: skys-core:nodejs
+          imagePullPolicy: Never
+          volumeMounts:
+            - name: skys-core-app
+              mountPath: /var/www
+            - name: skys-core-app-npm-log
+              mountPath: /root/.npm/_logs
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "development"
+            - name: AWS_DEFAULT_REGION
+              value: "ap-northeast-1"
+            - name: AWS_DEFAULT_OUTPUT
+              value: "json"
+            - name: AWS_ACCESS_KEY_ID
+              value: "test"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "test"
+            - name: AWS_CLI_FILE_ENCODING
+              value: "utf-8"
+            - name: DATABASE_HOST
+              value: "skys-dynamodb-svc"
+            - name: DATABASE_PORT
+              value: "8000"
+            - name: MEDIA_TABLE_NAME
+              value: "Media"
+            - name: NEWSFEED_TABLE_NAME
+              value: "NewsFeed"
+      volumes:
+        - name: skys-core-app
+          hostPath:
+            path: {{ .Values.container.volume.project_root_path }}
+            type: DirectoryOrCreate
+        - name: skys-core-app-npm-log
+          hostPath:
+            path: {{ .Values.container.volume.project_root_path }}/logs/npm
+            type: DirectoryOrCreate
