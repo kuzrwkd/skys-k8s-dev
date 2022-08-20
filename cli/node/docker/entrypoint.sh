@@ -12,6 +12,8 @@ cd /var/www
 npm cache clean -f
 npm install
 npm run build
+npm link
+chmod +x /usr/local/lib/node_modules/@kuzrwkd/skys-cli
 
 /usr/local/bin/wait-for-it.sh "$DATABASE_HOST":"$DATABASE_PORT" --timeout=30 --strict -- echo "=== dynamodb connected! ==="
 
