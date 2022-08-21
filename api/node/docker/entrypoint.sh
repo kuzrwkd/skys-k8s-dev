@@ -9,10 +9,10 @@ set -eux
 
 cd /var/www
 
-npm cache clean -f \
-&& npm install \
-&& npm run build
+npm cache clean -f
+npm install
+npm run build
 
 /usr/local/bin/wait-for-it.sh "$DATABASE_HOST":"$DATABASE_PORT" --timeout=30 --strict -- echo "=== dynamodb connected! ==="
 
-npm run start:dev
+while true; do sleep 86400; done

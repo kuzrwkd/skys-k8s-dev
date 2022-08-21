@@ -45,7 +45,7 @@ spec:
             - name: MEDIA_TABLE_NAME
               value: "Media"
             - name: NEWSFEED_TABLE_NAME
-              value: "NewsFeed"
+              value: "Newsfeed"
             - name: APP_HOST
               value: "skys-api-app-svc"
             - name: APP_PORT

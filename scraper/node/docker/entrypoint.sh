@@ -15,11 +15,4 @@ npm run build
 
 /usr/local/bin/wait-for-it.sh "$DATABASE_HOST":"$DATABASE_PORT" --timeout=30 --strict -- echo "=== dynamodb connected! ==="
 
-if [ "$NODE_ENV" == 'development' ]; then
-  # ローカル環境用
-  npm run start:dev
-else
-  # 本番環境用
-  pm2 start ecosystem.config.js
-  while true; do sleep 86400; done
-fi
+while true; do sleep 86400; done
