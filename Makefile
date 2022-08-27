@@ -23,16 +23,16 @@ build-scraper:
 # clean
 #
 clean-core:
-	docker rmi skys-core:nodejs
+	docker rmi skys-core:v1.0.0
 
 clean-cli:
-	docker rmi skys-cli:nodejs
+	docker rmi skys-cli:v1.0.0
 
 clean-api:
-	docker rmi skys-api:nestjs
+	docker rmi skys-api:v1.0.0
 
 clean-scraper:
-	docker rmi skys-scraper:puppeteer-with-nestjs
+	docker rmi skys-scraper:v1.0.0
 
 clean-dynamodb:
 	docker rmi skys-dynamodb
