@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: skys-cli-app
-          image: skys-cli:nodejs
+          image: skys-cli:v1.0.0
           imagePullPolicy: Never
           volumeMounts:
             - name: skys-cli-app
@@ -42,10 +42,6 @@ spec:
               value: "skys-dynamodb-svc"
             - name: DATABASE_PORT
               value: "8000"
-            - name: MEDIA_TABLE_NAME
-              value: "Media"
-            - name: NEWSFEED_TABLE_NAME
-              value: "Newsfeed"
       volumes:
         - name: skys-cli-app
           hostPath:

@@ -5,19 +5,19 @@ include envfile
 # build
 #
 build-core:
-	docker build --no-cache -t skys-core:nodejs core/node/docker
+	docker build --no-cache -t skys-core:v1.0.0 core/node/docker
 
 build-cli:
-	docker build --no-cache -t skys-cli:nodejs cli/node/docker
+	docker build --no-cache -t skys-cli:v1.0.0 cli/node/docker
 
 build-dynamodb:
 	docker build --no-cache -t skys-dynamodb db/dynamodb/docker
 
 build-api:
-	docker build --no-cache -t skys-api:nestjs api/node/docker
+	docker build --no-cache -t skys-api:v1.0.0 api/node/docker
 
 build-scraper:
-	docker build --no-cache -t skys-scraper:puppeteer-with-nestjs scraper/node/docker
+	docker build --no-cache -t skys-scraper:v1.0.0 scraper/node/docker
 
 ##
 # clean

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: skys-api-app
-          image: skys-api:nestjs
+          image: skys-api:v1.0.0
           imagePullPolicy: Never
           volumeMounts:
             - name: skys-api-app
@@ -42,10 +42,6 @@ spec:
               value: "skys-dynamodb-svc"
             - name: DATABASE_PORT
               value: "8000"
-            - name: MEDIA_TABLE_NAME
-              value: "Media"
-            - name: NEWSFEED_TABLE_NAME
-              value: "Newsfeed"
             - name: APP_HOST
               value: "skys-api-app-svc"
             - name: APP_PORT
