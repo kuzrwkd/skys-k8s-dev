@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: skys-dynamodb-dep
+  name: dev-skys-dynamodb-dep
 spec:
   selector:
     matchLabels:
-      app: skys-dynamodb
+      app: dev-skys-dynamodb
   strategy:
     type: Recreate
   template:
     metadata:
-      name: skys-dynamodb-pod
+      name: dev-skys-dynamodb-pod
       labels:
-        app: skys-dynamodb
+        app: dev-skys-dynamodb
     spec:
       containers:
-        - name: skys-dynamodb
-          image: skys-dynamodb
+        - name: dev-skys-dynamodb
+          image: dev-skys-dynamodb
           imagePullPolicy: Never
           ports:
             - containerPort: 8000

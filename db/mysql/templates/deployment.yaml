@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: skys-api-db-dep
+  name: dev-skys-mysql-dep
 spec:
   selector:
     matchLabels:
-      app: skys-api-db
+      app: dev-skys-mysql
   strategy:
     type: Recreate
   template:
     metadata:
-      name: skys-api-db-pod
+      name: dev-skys-mysql-pod
       labels:
-        app: skys-api-db
+        app: dev-skys-mysql
     spec:
       containers:
-        - name: skys-api-db
-          image: skys-api:mysql8.0
+        - name: dev-skys-mysql
+          image: dev-skys-mysql8
           imagePullPolicy: Never
           volumeMounts:
-            - name: mysql-init
+            - name: dev-mysql-init
               mountPath: /docker-entrypoint-initdb.d
-            - name: mysql-conf
+            - name: dev-mysql-conf
               mountPath: /etc/mysql/conf.d
           env:
             - name: MYSQL_ROOT_PASSWORD
@@ -31,13 +31,13 @@ spec:
           ports:
             - containerPort: 3306
       volumes:
-        - name: mysql-init
+        - name: dev-mysql-init
           configMap:
             name: db-init
             items:
               - key: initdb.sql
                 path: initdb.sql
-        - name: mysql-conf
+        - name: dev-mysql-conf
           configMap:
             name: db-conf
             items:

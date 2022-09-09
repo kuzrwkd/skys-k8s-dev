@@ -4,38 +4,38 @@ include envfile
 ##
 # build
 #
-build-core:
-	docker build --no-cache -t skys-core:v1.0.0 core/node/docker
+dev-build-core:
+	cd ${SKYS_CORE_ROOT_PATH} && docker build --no-cache -t dev-skys-core -f docker/dev.dockerfile .
 
-build-cli:
-	docker build --no-cache -t skys-cli:v1.0.0 cli/node/docker
+dev-build-cli:
+	cd ${SKYS_CLI_ROOT_PATH} && docker build --no-cache -t dev-skys-cli -f docker/dev.dockerfile .
 
-build-dynamodb:
-	docker build --no-cache -t skys-dynamodb db/dynamodb/docker
+dev-build-dynamodb:
+	docker build --no-cache -t dev-skys-dynamodb db/dynamodb/docker
 
-build-api:
-	docker build --no-cache -t skys-api:v1.0.0 api/node/docker
+dev-build-api:
+	cd ${SKYS_API_ROOT_PATH} && docker build --no-cache -t dev-skys-api -f docker/dev.dockerfile .
 
-build-scraper:
-	docker build --no-cache -t skys-scraper:v1.0.0 scraper/node/docker
+dev-build-scraper:
+	cd ${SKYS_SCRAPER_ROOT_PATH} && docker build --no-cache -t dev-skys-scraper -f docker/dev.dockerfile .
 
 ##
 # clean
 #
-clean-core:
-	docker rmi skys-core:v1.0.0
+dev-clean-core:
+	docker rmi dev-skys-core
 
-clean-cli:
-	docker rmi skys-cli:v1.0.0
+dev-clean-cli:
+	docker rmi dev-skys-cli
 
-clean-api:
-	docker rmi skys-api:v1.0.0
+dev-clean-api:
+	docker rmi dev-skys-api
 
-clean-scraper:
-	docker rmi skys-scraper:v1.0.0
+dev-clean-scraper:
+	docker rmi dev-skys-scraper
 
-clean-dynamodb:
-	docker rmi skys-dynamodb
+dev-clean-dynamodb:
+	docker rmi dev-skys-dynamodb
 
 ##
 # apply
@@ -50,7 +50,7 @@ install-api:
 	helm install skys-api-app api/node --debug --set container.volume.project_root_path=${SKYS_API_ROOT_PATH}
 
 install-scraper:
-	helm install skys-scraper-app scraper/node --debug --set container.volume.project_root_path=${SKYS_SCRAPER_ROOT_PATH},container.pm2io.public_key=${PM2_PUBLIC_KEY},container.pm2io.secret_key=${PM2_SECRET_KEY}
+	helm install skys-scraper-app scraper/node --debug --set container.volume.project_root_path=${SKYS_SCRAPER_ROOT_PATH}
 
 install-dynamodb:
 	helm install skys-dynamodb db/dynamodb --debug

@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: skys-dynamodb-svc
+  name: dev-skys-dynamodb-svc
 spec:
   type: {{ .Values.service.type }}
   selector:
-    app: skys-dynamodb
+    app: dev-skys-dynamodb
   ports:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.targetPort }}

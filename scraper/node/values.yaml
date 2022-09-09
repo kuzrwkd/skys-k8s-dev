@@ -7,6 +7,3 @@ service:
 container:
   volume:
     project_root_path: default
-  pm2io:
-    public_key: default
-    secret_key: default

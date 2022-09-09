@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: skys-core-app-dep
+  name: dev-skys-core-app-dep
 spec:
   selector:
     matchLabels:
-      app: skys-core-app
+      app: dev-skys-core-app
   strategy:
     type: Recreate
   template:
     metadata:
-      name: skys-core-app-pod
+      name: dev-skys-core-app-pod
       labels:
-        app: skys-core-app
+        app: dev-skys-core-app
     spec:
       containers:
-        - name: skys-core-app
-          image: skys-core:v1.0.0
+        - name: dev-skys-core-app
+          image: dev-skys-core
           imagePullPolicy: Never
           volumeMounts:
-            - name: skys-core-app
+            - name: dev-skys-core-app
               mountPath: /var/www
-            - name: skys-core-app-npm-log
+            - name: dev-skys-core-app-npm-log
               mountPath: /root/.npm/_logs
           ports:
             - containerPort: 3000
@@ -39,15 +39,15 @@ spec:
             - name: AWS_CLI_FILE_ENCODING
               value: "utf-8"
             - name: DATABASE_HOST
-              value: "skys-dynamodb-svc"
+              value: "dev-skys-dynamodb-svc"
             - name: DATABASE_PORT
               value: "8000"
       volumes:
-        - name: skys-core-app
+        - name: dev-skys-core-app
           hostPath:
             path: {{ .Values.container.volume.project_root_path }}
             type: DirectoryOrCreate
-        - name: skys-core-app-npm-log
+        - name: dev-skys-core-app-npm-log
           hostPath:
             path: {{ .Values.container.volume.project_root_path }}/logs/npm
             type: DirectoryOrCreate
