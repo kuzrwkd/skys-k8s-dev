@@ -4,37 +4,37 @@ include envfile
 ##
 # build
 #
-dev-build-core:
+build-dev-core:
 	cd ${SKYS_CORE_ROOT_PATH} && docker build --no-cache -t dev-skys-core -f docker/dev.dockerfile .
 
-dev-build-cli:
+build-dev-cli:
 	cd ${SKYS_CLI_ROOT_PATH} && docker build --no-cache -t dev-skys-cli -f docker/dev.dockerfile .
 
-dev-build-dynamodb:
+build-dev-dynamodb:
 	docker build --no-cache -t dev-skys-dynamodb db/dynamodb/docker
 
-dev-build-api:
+build-dev-api:
 	cd ${SKYS_API_ROOT_PATH} && docker build --no-cache -t dev-skys-api -f docker/dev.dockerfile .
 
-dev-build-scraper:
+build-dev-scraper:
 	cd ${SKYS_SCRAPER_ROOT_PATH} && docker build --no-cache -t dev-skys-scraper -f docker/dev.dockerfile .
 
 ##
 # clean
 #
-dev-clean-core:
+clean-dev-core:
 	docker rmi dev-skys-core
 
-dev-clean-cli:
+clean-dev-cli:
 	docker rmi dev-skys-cli
 
-dev-clean-api:
+clean-dev-api:
 	docker rmi dev-skys-api
 
-dev-clean-scraper:
+clean-dev-scraper:
 	docker rmi dev-skys-scraper
 
-dev-clean-dynamodb:
+clean-dev-dynamodb:
 	docker rmi dev-skys-dynamodb
 
 ##
