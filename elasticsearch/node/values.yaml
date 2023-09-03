@@ -1,0 +1,12 @@
+service:
+  ports:
+    - name: http
+      port: 9200
+      targetPort: 9200
+    - name: transport
+      port: 9300
+      nodePort: 9300
+
+container:
+  volume:
+    project_root_path: default

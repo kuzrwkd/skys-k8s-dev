@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-skys-elasticsearch-dep
+spec:
+  selector:
+    matchLabels:
+      app: dev-skys-elasticsearch
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: dev-skys-elasticsearch-pod
+      labels:
+        app: dev-skys-elasticsearch
+    spec:
+      containers:
+        - name: dev-skys-elasticsearch
+          image: dev-skys-elasticsearch
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 9200
+            - containerPort: 9300
+          volumeMounts:
+            - name: dev-skys-elasticsearch-data
+              mountPath: /var/data/elasticsearch
+            - name: dev-skys-elasticsearch-log
+              mountPath: /var/log/elasticsearch
+      volumes:
+        - name: dev-skys-elasticsearch-data
+          hostPath:
+            path: {{ .Values.container.volume.project_root_path }}/data/elasticsearch
+            type: DirectoryOrCreate
+        - name: dev-skys-elasticsearch-log
+          hostPath:
+            path: {{ .Values.container.volume.project_root_path }}/log/elasticsearch
+            type: DirectoryOrCreate

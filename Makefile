@@ -19,6 +19,12 @@ build-dev-api:
 build-dev-scraper:
 	cd ${SKYS_SCRAPER_ROOT_PATH} && docker build --no-cache -t dev-skys-scraper -f docker/dev.dockerfile .
 
+build-dev-elasticsearch:
+	cd ${SKYS_ELASTICSEARCH_ROOT_PATH} && docker build --no-cache -t dev-skys-elasticsearch -f docker/dev.elasticsearch.dockerfile .
+
+build-dev-kibana:
+	cd ${SKYS_ELASTICSEARCH_ROOT_PATH} && docker build --no-cache -t dev-skys-kibana -f docker/dev.kibana.dockerfile .
+
 ##
 # clean
 #
@@ -36,6 +42,12 @@ clean-dev-scraper:
 
 clean-dev-dynamodb:
 	docker rmi dev-skys-dynamodb
+
+clean-dev-elasticsearch:
+	docker rmi dev-skys-elasticsearch
+
+clean-dev-kibana:
+	docker rmi dev-skys-kibana
 
 ##
 # apply
@@ -55,6 +67,9 @@ install-scraper:
 install-dynamodb:
 	helm install skys-dynamodb db/dynamodb --debug
 
+install-elasticsearch:
+	helm install skys-elasticsearch elasticsearch/node --debug --set container.volume.project_root_path=${SKYS_ELASTICSEARCH_ROOT_PATH}
+
 ##
 # delete
 #
@@ -72,3 +87,6 @@ uninstall-scraper:
 
 uninstall-dynamodb:
 	helm uninstall skys-dynamodb
+
+uninstall-elasticsearch:
+	helm uninstall skys-elasticsearch
