@@ -68,7 +68,7 @@ install-dynamodb:
 	helm install skys-dynamodb db/dynamodb --debug
 
 install-elasticsearch:
-	helm install skys-elasticsearch elasticsearch/node --debug --set container.volume.project_root_path=${SKYS_ELASTICSEARCH_ROOT_PATH}
+	helm install skys-elasticsearch elasticsearch/node --debug --set container.volume.project_root_path=${SKYS_ELASTICSEARCH_ROOT_PATH},container.env.elastic_password=${SKYS_ELASTIC_PASSWORD}
 
 ##
 # delete

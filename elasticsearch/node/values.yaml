@@ -8,5 +8,7 @@ service:
       nodePort: 9300
 
 container:
+  env:
+    elastic_password: default
   volume:
     project_root_path: default

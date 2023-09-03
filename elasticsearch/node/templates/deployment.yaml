@@ -21,6 +21,9 @@ spec:
           ports:
             - containerPort: 9200
             - containerPort: 9300
+          env:
+            - name: ELASTIC_PASSWORD
+              value: {{ .Values.container.env.elastic_password }}
           volumeMounts:
             - name: dev-skys-elasticsearch-data
               mountPath: /var/data/elasticsearch
