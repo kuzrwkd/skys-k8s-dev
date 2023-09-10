@@ -70,6 +70,9 @@ install-dynamodb:
 install-elasticsearch:
 	helm install skys-elasticsearch elasticsearch/node --debug --set container.volume.project_root_path=${SKYS_ELASTICSEARCH_ROOT_PATH},container.env.elastic_password=${SKYS_ELASTIC_PASSWORD}
 
+install-kibana:
+	helm install skys-kibana kibana/node --debug --set container.volume.project_root_path=${SKYS_ELASTICSEARCH_ROOT_PATH}
+
 ##
 # delete
 #
@@ -90,3 +93,6 @@ uninstall-dynamodb:
 
 uninstall-elasticsearch:
 	helm uninstall skys-elasticsearch
+
+uninstall-kibana:
+	helm uninstall skys-kibana

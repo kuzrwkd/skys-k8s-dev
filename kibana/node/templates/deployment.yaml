@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-skys-kibana-dep
+spec:
+  selector:
+    matchLabels:
+      app: dev-skys-kibana
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: dev-skys-kibana-pod
+      labels:
+        app: dev-skys-kibana
+    spec:
+      containers:
+        - name: dev-skys-kibana
+          image: dev-skys-kibana
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5601
+          env:
+            - name: ELASTICSEARCH_HOSTS
+              value: "http://dev-skys-elasticsearch-svc:9200"

@@ -1,0 +1,9 @@
+service:
+  type: NodePort
+  port: 80
+  targetPort: 5601
+  nodePort: 30004
+
+container:
+  volume:
+    project_root_path: default
