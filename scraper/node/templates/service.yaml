@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: dev-skys-scraper-app-svc
 spec:
-  type: {{ .Values.service.type }}
   selector:
     app: dev-skys-scraper-app
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.targetPort }}
-      nodePort: {{ .Values.service.nodePort }}
+    {{- range .Values.service.ports }}
+    - name: {{ .name }}
+      port: {{ .port }}
+      targetPort: {{ .targetPort }}
+    {{- end }}

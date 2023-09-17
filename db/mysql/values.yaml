@@ -1,5 +1,7 @@
 service:
   type: NodePort
-  port: 3306
-  targetPort: 3306
-  nodePort: 30306
+  ports:
+    - name: http
+      port: 3306
+      targetPort: 3306
+      nodePort: 30306

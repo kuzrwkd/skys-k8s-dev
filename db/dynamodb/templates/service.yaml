@@ -7,6 +7,9 @@ spec:
   selector:
     app: dev-skys-dynamodb
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.targetPort }}
-      nodePort: {{ .Values.service.nodePort }}
+    {{- range .Values.service.ports }}
+    - name: {{ .name }}
+      port: {{ .port }}
+      targetPort: {{ .targetPort }}
+      nodePort: {{ .nodePort }}
+    {{- end }}

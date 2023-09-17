@@ -1,7 +1,9 @@
 service:
   type: NodePort
-  port: 80
-  targetPort: 3000
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
 
 container:
   volume:
