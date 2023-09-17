@@ -20,6 +20,3 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 5601
-          env:
-            - name: ELASTICSEARCH_HOSTS
-              value: "http://dev-skys-elasticsearch-svc:9200"

@@ -1,8 +1,10 @@
 service:
   type: NodePort
-  port: 80
-  targetPort: 5601
-  nodePort: 30004
+  ports:
+    - name: http
+      port: 5601
+      targetPort: 5601
+      nodePort: 30601
 
 container:
   volume:

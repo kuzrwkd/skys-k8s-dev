@@ -1,11 +1,14 @@
 service:
+  type: NodePort
   ports:
     - name: http
       port: 9200
       targetPort: 9200
+      nodePort: 30920
     - name: transport
       port: 9300
-      nodePort: 9300
+      targetPort: 9300
+      nodePort: 30930
 
 container:
   env:
