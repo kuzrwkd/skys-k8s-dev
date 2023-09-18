@@ -10,9 +10,6 @@ build-dev-core:
 build-dev-cli:
 	cd ${SKYS_CLI_ROOT_PATH} && docker build --no-cache -t dev-skys-cli -f docker/dev.dockerfile .
 
-build-dev-dynamodb:
-	docker build --no-cache -t dev-skys-dynamodb db/dynamodb/docker
-
 build-dev-api:
 	cd ${SKYS_API_ROOT_PATH} && docker build --no-cache -t dev-skys-api -f docker/dev.dockerfile .
 
@@ -40,14 +37,23 @@ clean-dev-api:
 clean-dev-scraper:
 	docker rmi dev-skys-scraper
 
-clean-dev-dynamodb:
-	docker rmi dev-skys-dynamodb
-
 clean-dev-elasticsearch:
 	docker rmi dev-skys-elasticsearch
 
 clean-dev-kibana:
 	docker rmi dev-skys-kibana
+
+##
+# add repository
+#
+add-repository-localstack:
+	helm repo add localstack-charts https://localstack.github.io/helm-charts
+
+##
+# remove repository
+#
+remove-repository-localstack:
+	helm repo remove localstack-charts
 
 ##
 # apply
@@ -63,9 +69,6 @@ install-api:
 
 install-scraper:
 	helm install skys-scraper-app scraper/node --debug --set container.volume.project_root_path=${SKYS_SCRAPER_ROOT_PATH}
-
-install-dynamodb:
-	helm install skys-dynamodb db/dynamodb --debug
 
 install-elasticsearch:
 	helm install skys-elasticsearch elasticsearch/node --debug --set container.volume.project_root_path=${SKYS_ELASTICSEARCH_ROOT_PATH},container.env.elastic_password=${SKYS_ELASTIC_PASSWORD}
@@ -93,9 +96,6 @@ uninstall-api:
 
 uninstall-scraper:
 	helm uninstall skys-scraper-app
-
-uninstall-dynamodb:
-	helm uninstall skys-dynamodb
 
 uninstall-elasticsearch:
 	helm uninstall skys-elasticsearch
