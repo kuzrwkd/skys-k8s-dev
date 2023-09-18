@@ -75,7 +75,7 @@ install-kibana:
 
 install-localstack:
 	helm install localstack localstack-charts/localstack \
- 		--version 0.6.4 \
+		--version 0.6.4 \
     	--set startServices="dynamodb" \
     	--set service.edgeService.nodePort=30100 \
     	--wait
