@@ -22,6 +22,9 @@ build-dev-elasticsearch:
 build-dev-kibana:
 	cd ${SKYS_ELASTICSEARCH_ROOT_PATH} && docker build --no-cache -t dev-skys-kibana -f docker/dev.kibana.dockerfile .
 
+build-dev-cdk:
+	cd ${SKYS_CDK_ROOT_PATH} && docker build --no-cache -t dev-skys-cdk -f docker/dev.dockerfile .
+
 ##
 # clean
 #
@@ -42,6 +45,9 @@ clean-dev-elasticsearch:
 
 clean-dev-kibana:
 	docker rmi dev-skys-kibana
+
+clean-dev-cdk:
+	docker rmi dev-skys-cdk
 
 ##
 # add repository
@@ -78,10 +84,12 @@ install-kibana:
 
 install-localstack:
 	helm install localstack localstack-charts/localstack \
-		--version 0.6.4 \
-		--set startServices="dynamodb" \
 		--set service.edgeService.nodePort=30100 \
 		--wait
+
+install-cdk:
+	helm install skys-cdk cdk/node --debug --set container.volume.project_root_path=${SKYS_CDK_ROOT_PATH}
+
 ##
 # delete
 #
@@ -105,3 +113,6 @@ uninstall-kibana:
 
 uninstall-localstack:
 	helm delete localstack
+
+uninstall-cdk:
+	helm uninstall skys-cdk

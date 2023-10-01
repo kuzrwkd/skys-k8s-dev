@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-skys-cdk-dep
+spec:
+  selector:
+    matchLabels:
+      app: dev-skys-cdk
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: dev-skys-cdk-pod
+      labels:
+        app: dev-skys-cdk
+    spec:
+      containers:
+        - name: dev-skys-cdk
+          image: dev-skys-cdk
+          imagePullPolicy: Never
+          volumeMounts:
+            - name: dev-skys-cdk
+              mountPath: /var/www
+            - name: dev-skys-cdk-npm-log
+              mountPath: /root/.npm/_logs
+            - name: aws-cli-config
+              mountPath: /root/.aws
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "development"
+            - name: AWS_DEFAULT_REGION
+              value: "ap-northeast-1"
+            - name: AWS_DEFAULT_ACCOUNT
+              value: "000000000000"
+            - name: AWS_DEFAULT_OUTPUT
+              value: "json"
+            - name: AWS_ACCESS_KEY_ID
+              value: "localstack"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "localstack"
+            - name: AWS_CLI_FILE_ENCODING
+              value: "utf-8"
+            - name: LOCALSTACK_HOSTNAME
+              value: "localstack"
+            - name: EDGE_PORT
+              value: "4566"
+            - name: LOCALSTACK_HOST
+              value: "localstack:4566"
+      volumes:
+        - name: dev-skys-cdk
+          hostPath:
+            path: {{ .Values.container.volume.project_root_path }}
+            type: DirectoryOrCreate
+        - name: dev-skys-cdk-npm-log
+          hostPath:
+            path: {{ .Values.container.volume.project_root_path }}/logs/npm
+            type: DirectoryOrCreate
+        - name: aws-cli-config
+          configMap:
+            name: aws-cli-config
