@@ -85,6 +85,7 @@ install-kibana:
 install-localstack:
 	helm install localstack localstack-charts/localstack \
 		--set service.edgeService.nodePort=30100 \
+		--set mountDind.enabled=true \
 		--wait
 
 install-cdk:
