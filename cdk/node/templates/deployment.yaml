@@ -23,8 +23,6 @@ spec:
               mountPath: /var/www
             - name: dev-skys-cdk-npm-log
               mountPath: /root/.npm/_logs
-            - name: aws-cli-config
-              mountPath: /root/.aws
           ports:
             - containerPort: 3000
           env:
@@ -57,6 +55,3 @@ spec:
           hostPath:
             path: {{ .Values.container.volume.project_root_path }}/logs/npm
             type: DirectoryOrCreate
-        - name: aws-cli-config
-          configMap:
-            name: aws-cli-config
