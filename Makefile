@@ -49,6 +49,9 @@ clean-dev-kibana:
 clean-dev-cdk:
 	docker rmi dev-skys-cdk
 
+clean-localstack:
+	docker rmi localstack/localstack
+
 ##
 # add repository
 #
