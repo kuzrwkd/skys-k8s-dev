@@ -4,17 +4,8 @@ include envfile
 ##
 # build
 #
-build-dev-core:
-	cd ${SKYS_CORE_ROOT_PATH} && docker build --no-cache -t dev-skys-core -f docker/dev.dockerfile .
-
-build-dev-cli:
-	cd ${SKYS_CLI_ROOT_PATH} && docker build --no-cache -t dev-skys-cli -f docker/dev.dockerfile .
-
 build-dev-api:
 	cd ${SKYS_API_ROOT_PATH} && docker build --no-cache -t dev-skys-api -f docker/dev.dockerfile .
-
-build-dev-scraper:
-	cd ${SKYS_SCRAPER_ROOT_PATH} && docker build --no-cache -t dev-skys-scraper -f docker/dev.dockerfile .
 
 build-dev-elasticsearch:
 	cd ${SKYS_ELASTICSEARCH_ROOT_PATH} && docker build --no-cache -t dev-skys-elasticsearch -f docker/dev.elasticsearch.dockerfile .
@@ -28,17 +19,8 @@ build-dev-cdk:
 ##
 # clean
 #
-clean-dev-core:
-	docker rmi dev-skys-core
-
-clean-dev-cli:
-	docker rmi dev-skys-cli
-
 clean-dev-api:
 	docker rmi dev-skys-api
-
-clean-dev-scraper:
-	docker rmi dev-skys-scraper
 
 clean-dev-elasticsearch:
 	docker rmi dev-skys-elasticsearch
@@ -87,7 +69,7 @@ install-kibana:
 
 install-localstack:
 	helm install localstack localstack-charts/localstack \
-		--version 0.6.5 \
+		--version 0.6.8 \
 		--debug \
 		--set debug=true \
 		--set service.edgeService.nodePort=30100 \
