@@ -6,8 +6,8 @@ spec:
   selector:
     app: dev-skys-scraper-app
   ports:
-    {{- range .Values.service.ports }}
+    {{- range .Values.service.ports}}
     - name: {{ .name }}
       port: {{ .port }}
       targetPort: {{ .targetPort }}
-    {{- end }}
+    {{- end}}
