@@ -2,35 +2,8 @@
 include envfile
 
 ##
-# build
-#
-build-dev-api:
-	cd ${SKYS_API_ROOT_PATH} && docker build --no-cache -t dev-skys-api -f docker/dev.dockerfile .
-
-build-dev-elasticsearch:
-	cd ${SKYS_ELASTICSEARCH_ROOT_PATH} && docker build --no-cache -t dev-skys-elasticsearch -f docker/dev.elasticsearch.dockerfile .
-
-build-dev-kibana:
-	cd ${SKYS_ELASTICSEARCH_ROOT_PATH} && docker build --no-cache -t dev-skys-kibana -f docker/dev.kibana.dockerfile .
-
-build-dev-cdk:
-	cd ${SKYS_CDK_ROOT_PATH} && docker build --no-cache -t dev-skys-cdk -f docker/dev.dockerfile .
-
-##
 # clean
 #
-clean-dev-api:
-	docker rmi dev-skys-api
-
-clean-dev-elasticsearch:
-	docker rmi dev-skys-elasticsearch
-
-clean-dev-kibana:
-	docker rmi dev-skys-kibana
-
-clean-dev-cdk:
-	docker rmi dev-skys-cdk
-
 clean-localstack:
 	docker rmi localstack/localstack
 
