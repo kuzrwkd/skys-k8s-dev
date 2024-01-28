@@ -32,9 +32,9 @@ spec:
       volumes:
         - name: dev-skys-elasticsearch-data
           hostPath:
-            path: {{ .Values.container.volume.project_root_path }}/data/elasticsearch
+            path: {{.Values.container.volume.project_root_path}}/data/elasticsearch
             type: DirectoryOrCreate
         - name: dev-skys-elasticsearch-log
           hostPath:
-            path: {{ .Values.container.volume.project_root_path }}/log/elasticsearch
+            path: {{.Values.container.volume.project_root_path}}/log/elasticsearch
             type: DirectoryOrCreate

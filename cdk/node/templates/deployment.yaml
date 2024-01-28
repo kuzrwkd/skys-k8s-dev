@@ -49,9 +49,9 @@ spec:
       volumes:
         - name: dev-skys-cdk
           hostPath:
-            path: {{ .Values.container.volume.project_root_path }}
+            path: {{ .Values.container.volume.project_root_path }}/app
             type: DirectoryOrCreate
         - name: dev-skys-cdk-npm-log
           hostPath:
-            path: {{ .Values.container.volume.project_root_path }}/logs/npm
+            path: {{ .Values.container.volume.project_root_path }}/app/logs/npm
             type: DirectoryOrCreate

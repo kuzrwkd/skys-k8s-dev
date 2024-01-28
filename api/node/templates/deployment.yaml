@@ -45,9 +45,9 @@ spec:
       volumes:
         - name: dev-skys-api-app
           hostPath:
-            path: {{ .Values.container.volume.project_root_path }}
+            path: {{.Values.container.volume.project_root_path}}/app
             type: DirectoryOrCreate
         - name: dev-skys-api-npm-log
           hostPath:
-            path: {{ .Values.container.volume.project_root_path }}/logs/npm
+            path: {{.Values.container.volume.project_root_path}}/app/logs/npm
             type: DirectoryOrCreate

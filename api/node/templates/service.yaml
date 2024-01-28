@@ -7,9 +7,9 @@ spec:
   selector:
     app: dev-skys-api-app
   ports:
-    {{- range .Values.service.ports }}
+    {{- range .Values.service.ports}}
     - name: {{ .name }}
       port: {{ .port }}
       targetPort: {{ .targetPort }}
       nodePort: {{ .nodePort }}
-    {{- end }}
+    {{- end}}
