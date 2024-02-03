@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dev-skys-api-app-dep
+  name: dev-skys-api-dep
 spec:
   selector:
     matchLabels:
-      app: dev-skys-api-app
+      app: dev-skys-api
   strategy:
     type: Recreate
   template:
     metadata:
-      name: dev-skys-api-app-pod
+      name: dev-skys-api-pod
       labels:
-        app: dev-skys-api-app
+        app: dev-skys-api
     spec:
       containers:
-        - name: dev-skys-api-app
+        - name: dev-skys-api
           image: dev-skys-api
           imagePullPolicy: Never
           volumeMounts:
-            - name: dev-skys-api-app
+            - name: dev-skys-api
               mountPath: /var/www
             - name: dev-skys-api-npm-log
               mountPath: /root/.npm/_logs
@@ -43,7 +43,7 @@ spec:
             - name: DYNAMODB_PORT
               value: "4566"
       volumes:
-        - name: dev-skys-api-app
+        - name: dev-skys-api
           hostPath:
             path: {{.Values.container.volume.project_root_path}}/app
             type: DirectoryOrCreate

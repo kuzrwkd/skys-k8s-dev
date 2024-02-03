@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dev-skys-scraper-app-dep
+  name: dev-skys-scraper-dep
 spec:
   selector:
     matchLabels:
-      app: dev-skys-scraper-app
+      app: dev-skys-scraper
   strategy:
     type: Recreate
   template:
     metadata:
       name: dev-skys-scraper-app-pod
       labels:
-        app: dev-skys-scraper-app
+        app: dev-skys-scraper
     spec:
       containers:
-        - name: dev-skys-scraper-app
+        - name: dev-skys-scraper
           image: dev-skys-scraper
           imagePullPolicy: Never
           volumeMounts:
-            - name: dev-skys-scraper-app
+            - name: dev-skys-scraper
               mountPath: /var/www
-            - name: dev-skys-scraper-app-npm-log
+            - name: dev-skys-scraper-npm-log
               mountPath: /root/.npm/_logs
           ports:
             - containerPort: 3000
@@ -43,11 +43,11 @@ spec:
             - name: DYNAMODB_PORT
               value: "4566"
       volumes:
-        - name: dev-skys-scraper-app
+        - name: dev-skys-scraper
           hostPath:
-            path: {{.Values.container.volume.project_root_path}}/app
+            path: {{ .Values.container.volume.project_root_path }}/app
             type: DirectoryOrCreate
-        - name: dev-skys-scraper-app-npm-log
+        - name: dev-skys-scraper-npm-log
           hostPath:
-            path: {{.Values.container.volume.project_root_path}}/app/logs/npm
+            path: {{ .Values.container.volume.project_root_path }}/app/logs/npm
             type: DirectoryOrCreate
