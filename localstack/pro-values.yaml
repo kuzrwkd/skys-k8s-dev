@@ -1,0 +1,14 @@
+debug: true
+
+image:
+  repository: localstack/localstack-pro
+
+service:
+  edgeService:
+    nodePort: 30100
+
+mountDind:
+  enabled: true
+
+lambda:
+  executor: kubernetes

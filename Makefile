@@ -41,12 +41,11 @@ install-kibana:
 	helm install skys-kibana kibana/node --debug --set container.volume.project_root_path=${SKYS_ELASTICSEARCH_ROOT_PATH}
 
 install-localstack:
-	helm install localstack localstack-charts/localstack \
-		--version 0.6.8 \
+	helm install localstack localstack-charts/localstack -f localstack/pro-values.yaml \
+		--version 0.6.9 \
 		--debug \
-		--set debug=true \
-		--set service.edgeService.nodePort=30100 \
-		--set mountDind.enabled=true \
+		--set extraEnvVars[0].name=LOCALSTACK_AUTH_TOKEN \
+		--set extraEnvVars[0].value=${LOCALSTACK_AUTH_TOKEN} \
 		--wait
 
 install-cdk:

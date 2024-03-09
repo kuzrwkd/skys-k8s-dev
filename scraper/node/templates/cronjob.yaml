@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: dev-skys-scraper-job
+spec:
+  schedule: "*/12 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: dev-skys-scraper-job-pod
+        spec:
+          containers:
+            - name: dev-skys-scraper
+              image: dev-skys-scraper
+              imagePullPolicy: Never
+              volumeMounts:
+                - name: dev-skys-scraper
+                  mountPath: /var/www
+                - name: dev-skys-scraper-npm-log
+                  mountPath: /root/.npm/_logs
+              env:
+                - name: NODE_ENV
+                  value: "development"
+                - name: AWS_DEFAULT_REGION
+                  value: "ap-northeast-1"
+                - name: AWS_DEFAULT_OUTPUT
+                  value: "json"
+                - name: AWS_ACCESS_KEY_ID
+                  value: "localstack"
+                - name: AWS_SECRET_ACCESS_KEY
+                  value: "localstack"
+                - name: AWS_CLI_FILE_ENCODING
+                  value: "utf-8"
+                - name: DYNAMODB_HOST
+                  value: "localstack"
+                - name: DYNAMODB_PORT
+                  value: "4566"
+          restartPolicy: OnFailure
+          volumes:
+            - name: dev-skys-scraper
+              hostPath:
+                path: {{ .Values.container.volume.project_root_path }}/app
+                type: DirectoryOrCreate
+            - name: dev-skys-scraper-npm-log
+              hostPath:
+                path: {{ .Values.container.volume.project_root_path }}/app/logs/npm
+                type: DirectoryOrCreate
