@@ -20,6 +20,30 @@ remove-repository-localstack:
 	helm repo remove localstack-charts
 
 ##
+# Install custom resource
+#
+install-eck-custom-resource:
+	kubectl apply -f https://download.elastic.co/downloads/eck/2.12.1/crds.yaml
+
+##
+# uninstall custom resource
+#
+uninstall-eck-custom-resource:
+	kubectl delete -f https://download.elastic.co/downloads/eck/2.12.1/crds.yaml
+
+##
+# install operator
+#
+install-eck-operator:
+	kubectl apply -f https://download.elastic.co/downloads/eck/2.12.1/operator.yaml
+
+##
+# uninstall operator
+#
+uninstall-eck-operator:
+	kubectl delete -f https://download.elastic.co/downloads/eck/2.12.1/operator.yaml
+
+##
 # apply
 #
 install-core:
@@ -35,10 +59,10 @@ install-scraper:
 	helm install skys-scraper-app scraper/node --debug --set container.volume.project_root_path=${SKYS_SCRAPER_ROOT_PATH}
 
 install-elasticsearch:
-	helm install skys-elasticsearch elasticsearch/node --debug --set container.volume.project_root_path=${SKYS_ELASTICSEARCH_ROOT_PATH},container.env.elastic_password=${SKYS_ELASTIC_PASSWORD}
+	helm install skys-elasticsearch elasticsearch/node --debug
 
 install-kibana:
-	helm install skys-kibana kibana/node --debug --set container.volume.project_root_path=${SKYS_ELASTICSEARCH_ROOT_PATH}
+	helm install skys-kibana kibana/node --debug
 
 install-localstack:
 	helm install localstack localstack-charts/localstack -f localstack/pro-values.yaml \
