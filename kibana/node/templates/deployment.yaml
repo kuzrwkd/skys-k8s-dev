@@ -1,22 +1,9 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
 metadata:
-  name: dev-skys-kibana-dep
+  name: dev-skys-kibana
 spec:
-  selector:
-    matchLabels:
-      app: dev-skys-kibana
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      name: dev-skys-kibana-pod
-      labels:
-        app: dev-skys-kibana
-    spec:
-      containers:
-        - name: dev-skys-kibana
-          image: dev-skys-kibana
-          imagePullPolicy: Never
-          ports:
-            - containerPort: 5601
+  version: 8.13.0
+  count: 1
+  elasticsearchRef:
+    name: dev-skys-elasticsearch
