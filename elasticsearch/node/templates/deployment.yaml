@@ -1,7 +1,7 @@
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
-  name: dev-skys-elasticsearch
+  name: dev-skys
 spec:
   version: 8.13.0
   nodeSets:
