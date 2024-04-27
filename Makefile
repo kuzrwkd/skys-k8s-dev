@@ -47,16 +47,16 @@ uninstall-eck-operator:
 # apply
 #
 install-core:
-	helm install skys-core-app core/node --debug --set container.volume.project_root_path=${SKYS_CORE_ROOT_PATH}
+	helm install skys-core core/node --debug --set container.volume.project_root_path=${SKYS_CORE_ROOT_PATH}
 
 install-cli:
-	helm install skys-cli-app cli/node --debug --set container.volume.project_root_path=${SKYS_CLI_ROOT_PATH}
+	helm install skys-cli cli/node --debug --set container.volume.project_root_path=${SKYS_CLI_ROOT_PATH}
 
 install-api:
-	helm install skys-api-app api/node --debug --set container.volume.project_root_path=${SKYS_API_ROOT_PATH}
+	helm install skys-api api/node --debug --set container.volume.project_root_path=${SKYS_API_ROOT_PATH}
 
 install-scraper:
-	helm install skys-scraper-app scraper/node --debug --set container.volume.project_root_path=${SKYS_SCRAPER_ROOT_PATH}
+	helm install skys-scraper scraper/node --debug --set container.volume.project_root_path=${SKYS_SCRAPER_ROOT_PATH}
 
 install-elasticsearch:
 	helm install skys-elasticsearch elasticsearch/node --debug
@@ -73,22 +73,25 @@ install-localstack:
 		--wait
 
 install-cdk:
-	helm install skys-cdk cdk/node --debug --set container.volume.project_root_path=${SKYS_CDK_ROOT_PATH}
+	helm install skys-cdk cdk/node \
+		--debug \
+		--set container.volume.project_root_path=${SKYS_CDK_ROOT_PATH} \
+		--set env.elasticsearch_password=${ELASTIC_SEARCH_PASSWORD}
 
 ##
 # delete
 #
 uninstall-core:
-	helm uninstall skys-core-app
+	helm uninstall skys-core
 
 uninstall-cli:
-	helm uninstall skys-cli-app
+	helm uninstall skys-cli
 
 uninstall-api:
-	helm uninstall skys-api-app
+	helm uninstall skys-api
 
 uninstall-scraper:
-	helm uninstall skys-scraper-app
+	helm uninstall skys-scraper
 
 uninstall-elasticsearch:
 	helm uninstall skys-elasticsearch
