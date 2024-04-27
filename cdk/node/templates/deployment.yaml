@@ -44,6 +44,14 @@ spec:
               value: "4566"
             - name: LOCALSTACK_HOST
               value: "localstack:4566"
+            - name: ELASTIC_SEARCH_HOST
+              value: "dev-skys-es-http"
+            - name: ELASTIC_SEARCH_PORT
+              value: "9200"
+            - name: ELASTIC_SEARCH_USER_NAME
+              value: "elastic"
+            - name: ELASTIC_SEARCH_PASSWORD
+              value: {{ .Values.env.elasticsearch_password }}
       volumes:
         - name: dev-skys-cdk
           hostPath:
