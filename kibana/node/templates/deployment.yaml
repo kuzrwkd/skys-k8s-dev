@@ -7,3 +7,7 @@ spec:
   count: 1
   elasticsearchRef:
     name: dev-skys
+  http:
+    tls:
+      selfSignedCertificate:
+        disabled: true
