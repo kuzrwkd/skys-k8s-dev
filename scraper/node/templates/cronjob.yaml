@@ -8,7 +8,7 @@ spec:
     spec:
       template:
         metadata:
-          name: dev-skys-scraper-job-pod
+          name: dev-skys-scraper-job
         spec:
           containers:
             - name: dev-skys-scraper
