@@ -26,8 +26,6 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: NODE_ENV
-              value: "development"
             - name: AWS_DEFAULT_REGION
               value: "ap-northeast-1"
             - name: AWS_DEFAULT_OUTPUT
