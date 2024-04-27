@@ -1,3 +1,5 @@
 container:
   volume:
     project_root_path: default
+env:
+  elasticsearch_password: default
