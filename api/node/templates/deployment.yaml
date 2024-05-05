@@ -36,10 +36,6 @@ spec:
               value: "localstack"
             - name: AWS_CLI_FILE_ENCODING
               value: "utf-8"
-            - name: DYNAMODB_HOST
-              value: "localstack"
-            - name: DYNAMODB_PORT
-              value: "4566"
       volumes:
         - name: dev-skys-api
           hostPath:
