@@ -66,7 +66,7 @@ install-kibana:
 
 install-localstack:
 	helm install localstack localstack-charts/localstack -f localstack/pro-values.yaml \
-		--version 0.6.11 \
+		--version 0.6.12 \
 		--debug \
 		--set extraEnvVars[0].name=LOCALSTACK_AUTH_TOKEN \
 		--set extraEnvVars[0].value=${LOCALSTACK_AUTH_TOKEN} \
