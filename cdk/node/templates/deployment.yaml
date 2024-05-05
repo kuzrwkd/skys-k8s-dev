@@ -40,8 +40,6 @@ spec:
               value: "utf-8"
             - name: LOCALSTACK_HOSTNAME
               value: "localstack"
-            - name: EDGE_PORT
-              value: "4566"
             - name: LOCALSTACK_HOST
               value: "localstack:4566"
             - name: ELASTIC_SEARCH_HOST
