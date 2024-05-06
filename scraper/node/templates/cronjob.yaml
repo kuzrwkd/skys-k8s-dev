@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: dev-skys-scraper-job
 spec:
-  schedule: "*/12 * * * *"
+  schedule: "*/10 * * * *"
   jobTemplate:
     spec:
       template:
