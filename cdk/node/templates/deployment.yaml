@@ -46,7 +46,7 @@ spec:
               value: "dev-skys-es-http"
             - name: ELASTIC_SEARCH_PORT
               value: "9200"
-            - name: ELASTIC_SEARCH_USER_NAME
+            - name: ELASTIC_SEARCH_USERNAME
               value: "elastic"
             - name: ELASTIC_SEARCH_PASSWORD
               value: {{ .Values.env.elasticsearch_password }}
