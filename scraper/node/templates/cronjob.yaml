@@ -20,8 +20,6 @@ spec:
                 - name: dev-skys-scraper-npm-log
                   mountPath: /root/.npm/_logs
               env:
-                - name: NODE_ENV
-                  value: "development"
                 - name: AWS_DEFAULT_REGION
                   value: "ap-northeast-1"
                 - name: AWS_DEFAULT_OUTPUT
