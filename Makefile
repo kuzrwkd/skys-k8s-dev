@@ -47,22 +47,33 @@ uninstall-eck-operator:
 # apply
 #
 install-core:
-	helm install skys-core core/node --debug --set container.volume.project_root_path=${SKYS_CORE_ROOT_PATH}
+	helm install skys-core core/node \
+		--debug \
+		--set container.volume.project_root_path=${SKYS_CORE_ROOT_PATH}
 
 install-cli:
-	helm install skys-cli cli/node --debug --set container.volume.project_root_path=${SKYS_CLI_ROOT_PATH}
+	helm install skys-cli cli/node \
+		--debug \
+		--set container.volume.project_root_path=${SKYS_CLI_ROOT_PATH}
 
 install-api:
-	helm install skys-api api/node --debug --set container.volume.project_root_path=${SKYS_API_ROOT_PATH}
+	helm install skys-api api/node \
+		--debug \
+		--set container.volume.project_root_path=${SKYS_API_ROOT_PATH} \
+		--set env.elasticsearch_password=${ELASTIC_SEARCH_PASSWORD}
 
 install-scraper:
-	helm install skys-scraper scraper/node --debug --set container.volume.project_root_path=${SKYS_SCRAPER_ROOT_PATH}
+	helm install skys-scraper scraper/node \
+		--debug \
+		--set container.volume.project_root_path=${SKYS_SCRAPER_ROOT_PATH}
 
 install-elasticsearch:
-	helm install skys-elasticsearch elasticsearch/node --debug
+	helm install skys-elasticsearch elasticsearch/node \
+		--debug
 
 install-kibana:
-	helm install skys-kibana kibana/node --debug
+	helm install skys-kibana kibana/node \
+		--debug
 
 install-localstack:
 	helm install localstack localstack-charts/localstack -f localstack/pro-values.yaml \
