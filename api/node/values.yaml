@@ -5,7 +5,8 @@ service:
       port: 80
       targetPort: 3000
       nodePort: 30000
-
 container:
   volume:
     project_root_path: default
+env:
+  elasticsearch_password: default

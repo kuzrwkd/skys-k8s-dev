@@ -36,6 +36,18 @@ spec:
               value: "localstack"
             - name: AWS_CLI_FILE_ENCODING
               value: "utf-8"
+            - name: DYNAMODB_HOST
+              value: "localstack"
+            - name: DYNAMODB_PORT
+              value: "4566"
+            - name: ELASTIC_SEARCH_HOST
+              value: "dev-skys-es-http"
+            - name: ELASTIC_SEARCH_PORT
+              value: "9200"
+            - name: ELASTIC_SEARCH_USERNAME
+              value: "elastic"
+            - name: ELASTIC_SEARCH_PASSWORD
+              value: {{ .Values.env.elasticsearch_password }}
       volumes:
         - name: dev-skys-api
           hostPath:
